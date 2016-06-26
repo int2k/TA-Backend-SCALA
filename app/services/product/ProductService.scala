@@ -21,31 +21,27 @@ trait ProductServiceComponent {
 
 }
 
-trait UserServiceComponentImpl extends UserServiceComponent {
-    self: UserRepositoryComponent =>
+trait ProductServiceComponentImpl extends ProductServiceComponent {
+    self: ProductRepositoryComponent =>
     
-    override val userService = new UserServiceImpl
+    override val productService = new ProductServiceImpl
     
-    class UserServiceImpl extends UserService {
+    class ProductServiceImpl extends ProductService {
         
-        override def createUser(user: User): User = {
-            userRepository.createUser(user)
+        override def createProduct(product: Product): Product = {
+            productRepository.createProduct(product)
         }
         
-        override def updateUser(user: User) {
-            userRepository.updateUser(user)
+        override def updateProduct(product: Product) {
+            productRepository.updateProduct(product)
         }
         
-        override def tryFindById(id: Long): Option[User] = {
-            userRepository.tryFindById(id)
-        }
-
-        override def tryFindByEmail(email: String): Option[User] = {
-            userRepository.tryFindByEmail(email)
+        override def tryFindById(id: Long): Option[Product] = {
+            productRepository.tryFindById(id)
         }
         
         override def delete(id: Long) {
-            userRepository.delete(id)
+            productRepository.delete(id)
         }
         
     }
